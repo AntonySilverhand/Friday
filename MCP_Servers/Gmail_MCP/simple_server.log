@@ -1,0 +1,8 @@
+Starting Simple Gmail MCP Server on 127.0.0.1:5000
+SMTP Username: nymanjanita943@gmail.com
+ * Serving Flask app 'simple_gmail_mcp'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [20/Jun/2025 12:01:41] "GET /mcp HTTP/1.1" 200 -

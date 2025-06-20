@@ -17,8 +17,8 @@ class Jarvis:
                     "server_label": "deepwiki",
                     "server_url": "https://mcp.deepwiki.com/mcp",
                     "require_approval": "never",
-                },
-            ],
+                }
+            ],  
             input=input_text,
         )
 
@@ -28,7 +28,8 @@ class Jarvis:
 def main():
     AI = Jarvis()
     try:
-        input_text = input("Input: ")
+        # input_text = input("Input: ")
+        input_text = "What tools do you have?"
         response = AI.get_response(input_text=input_text)
         print(response)
     except Exception as e:
