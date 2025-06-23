@@ -2,7 +2,7 @@ from openai import OpenAI
 
 
 
-class Jarvis:
+class Friday:
     def __init__(self):
         self.client = OpenAI()
         self.input = [
@@ -30,7 +30,7 @@ class Jarvis:
 
 
 def main():
-    AI = Jarvis()
+    AI = Friday()
     try:
         # input_text = input("Input: ")
         # input_text = "What tools do you have?"

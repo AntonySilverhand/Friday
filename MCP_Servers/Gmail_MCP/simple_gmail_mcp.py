@@ -13,7 +13,7 @@ from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 
 # Load environment variables
-load_dotenv('/root/coding/Jarvis/MCP_Servers/Gmail_MCP/Gmail-mcp-server/gmail-mcp-server/.env')
+load_dotenv('/root/coding/Friday/MCP_Servers/Gmail_MCP/Gmail-mcp-server/gmail-mcp-server/.env')
 
 app = Flask(__name__)
 
