@@ -1,0 +1,1 @@
+Error code: 424 - {'error': {'message': "Error retrieving tool list from MCP server: 'gmail-mcp'. Http status code: 424 (Failed Dependency)", 'type': 'external_connector_error', 'param': 'tools', 'code': 'http_error'}}

@@ -2,13 +2,17 @@ from openai import OpenAI
 
 
 
-
-
 class Jarvis:
     def __init__(self):
         self.client = OpenAI()
+        self.input = [
+            {
+                "role": "user",
+                "content": "What tools do you have?"
+            }
+        ]
 
-    def get_response(self, input_text):
+    def get_response(self, input_text=None):
         resp = self.client.responses.create(
             model="gpt-4.1-mini",
             tools=[
@@ -19,7 +23,7 @@ class Jarvis:
                     "require_approval": "never",
                 }
             ],  
-            input=input_text,
+            input = self.input
         )
 
         return resp.output_text
@@ -29,8 +33,8 @@ def main():
     AI = Jarvis()
     try:
         # input_text = input("Input: ")
-        input_text = "What tools do you have?"
-        response = AI.get_response(input_text=input_text)
+        # input_text = "What tools do you have?"
+        response = AI.get_response()  # Replace with your input text
         print(response)
     except Exception as e:
         print(e)
