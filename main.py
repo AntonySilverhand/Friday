@@ -1,10 +1,14 @@
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 
 class Friday:
     def __init__(self):
-        self.client = OpenAI()
+        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         self.input = [
             {
                 "role": "developer",
