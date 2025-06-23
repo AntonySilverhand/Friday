@@ -7,8 +7,8 @@ class Friday:
         self.client = OpenAI()
         self.input = [
             {
-                "role": "user",
-                "content": "What tools do you have?"
+                "role": "developer",
+                "content": "You are Friday from the movie The Avengers, a smart high-tech AI assistant developed by Iron Man, now you are assisting Antony, me. You speak in a brief, clean, high efficient way. You are assistive. You use a very formal tone, for most of the time you call me sir."
             }
         ]
 
@@ -23,7 +23,7 @@ class Friday:
                     "require_approval": "never",
                 }
             ],  
-            input = self.input
+            input = self.input + [{"role": "user", "content": input_text}],
         )
 
         return resp.output_text
@@ -33,8 +33,8 @@ def main():
     AI = Friday()
     try:
         # input_text = input("Input: ")
-        # input_text = "What tools do you have?"
-        response = AI.get_response()  # Replace with your input text
+        input_text = "What tools do you have?"
+        response = AI.get_response(input_text)  # Replace with your input text
         print(response)
     except Exception as e:
         print(e)
