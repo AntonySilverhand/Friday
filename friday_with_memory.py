@@ -223,6 +223,13 @@ IMPORTANT: You start each conversation fresh unless relevant context is provided
                 "server_url": "https://mcp.deepwiki.com/mcp",
                 "require_approval": "never",
             },
+            # Telegram MCP server
+            {
+                "type": "mcp",
+                "server_label": "telegram",
+                "server_url": "http://127.0.0.1:5001/mcp",
+                "require_approval": "never",
+            },
             # Send email function
             {
                 "type": "function",
