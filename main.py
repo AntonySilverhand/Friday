@@ -53,7 +53,8 @@ class Friday:
                             "attachment_path": {
                                 "type": "string",
                                 "description": "Optional file path for attachment"
-                            }                        
+                            }
+                        }
                     },
                     "required": ["to", "subject", "body"],
                     "additional_properties": False
