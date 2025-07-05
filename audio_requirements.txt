@@ -1,0 +1,25 @@
+# Audio Server Requirements for Friday AI ESP32S3 Integration
+
+# WebSocket server
+websockets==12.0
+
+# Audio processing
+wave
+pyaudio==0.2.13
+
+# OpenAI for STT and TTS
+openai>=1.0.0
+
+# Environment variables
+python-dotenv
+
+# Async support
+asyncio
+
+# Path handling
+pathlib
+
+# JSON handling (built-in)
+# logging (built-in)
+# time (built-in)
+# io (built-in)
