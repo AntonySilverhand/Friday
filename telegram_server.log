@@ -1,0 +1,6 @@
+2025-07-04 22:36:27,944 - dotenv.main - WARNING - python-dotenv could not parse statement starting at line 2
+2025-07-04 22:36:27,952 - MCP_Servers.Telegram_MCP.telegram_mcp_server - WARNING - TELEGRAM_BOT_TOKEN not found in environment variables
+2025-07-04 22:36:27,961 - MCP_Servers.Telegram_MCP.telegram_mcp_server - WARNING - TELEGRAM_BOT_TOKEN not found in environment variables
+2025-07-04 22:36:28,050 - MCP_Servers.Telegram_MCP.telegram_mcp_server - INFO - Retrieved 0 recent messages
+2025-07-04 22:36:28,050 - MCP_Servers.Telegram_MCP.telegram_mcp_server - INFO - Retrieved information for 0 chats
+2025-07-04 22:36:28,050 - MCP_Servers.Telegram_MCP.telegram_mcp_server - INFO - Found 0 messages matching 'test'

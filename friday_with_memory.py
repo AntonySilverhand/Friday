@@ -6,14 +6,9 @@ Enhanced Friday AI Assistant with Timeline-Based Memory Management
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
-import smtplib
 import time
 import uuid
 from datetime import datetime
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email import encoders
 from typing import Optional, Dict, List, Any
 
 # Import our memory management modules
@@ -57,9 +52,6 @@ IMPORTANT: You start each conversation fresh unless relevant context is provided
     
     def _setup_function_registry(self):
         """Setup the function registry for tool calls"""
-        # Email function
-        self._function_registry["send_email"] = self.send_email
-        
         # History retrieval functions
         self._function_registry["retrieve_history"] = self.history_retrieval.retrieve_history
         self._function_registry["search_tool_usage"] = self.history_retrieval.search_tool_usage
@@ -230,34 +222,19 @@ IMPORTANT: You start each conversation fresh unless relevant context is provided
                 "server_url": "http://127.0.0.1:5001/mcp",
                 "require_approval": "never",
             },
-            # Send email function
+            # Email MCP server
             {
-                "type": "function",
-                "name": "send_email",
-                "description": "Send an email to a given recipient with a subject and body via Gmail SMTP",
-                "parameters": {
-                    "type": "object",
-                    "properties": {
-                        "to": {
-                            "type": "string",
-                            "description": "Email address to send to"
-                        },
-                        "subject": {
-                            "type": "string", 
-                            "description": "Email subject"
-                        },
-                        "body": {
-                            "type": "string",
-                            "description": "Email body text"
-                        },
-                        "attachment_path": {
-                            "type": "string",
-                            "description": "Optional file path for attachment"
-                        }
-                    },
-                    "required": ["to", "subject", "body"],
-                    "additional_properties": False
-                }
+                "type": "mcp",
+                "server_label": "email",
+                "server_url": "http://127.0.0.1:5002/mcp",
+                "require_approval": "never",
+            },
+            # Day Management MCP server
+            {
+                "type": "mcp",
+                "server_label": "day-management",
+                "server_url": "http://127.0.0.1:5003/mcp",
+                "require_approval": "never",
             },
             # History retrieval function
             {
@@ -409,46 +386,6 @@ IMPORTANT: You start each conversation fresh unless relevant context is provided
         )
         
         self.memory_manager.store_conversation(entry)
-    
-    def send_email(self, to: str, subject: str, body: str, attachment_path: Optional[str] = None) -> str:
-        """Send an email via Gmail SMTP"""
-        try:
-            gmail_user = os.getenv("GMAIL_USER")
-            gmail_password = os.getenv("GMAIL_APP_PASSWORD")
-            
-            if not gmail_user or not gmail_password:
-                return "Error: Gmail credentials not found in environment variables"
-            
-            msg = MIMEMultipart()
-            msg['From'] = gmail_user
-            msg['To'] = to
-            msg['Subject'] = subject
-            
-            msg.attach(MIMEText(body, 'plain'))
-            
-            if attachment_path and os.path.exists(attachment_path):
-                with open(attachment_path, "rb") as attachment:
-                    part = MIMEBase('application', 'octet-stream')
-                    part.set_payload(attachment.read())
-                
-                encoders.encode_base64(part)
-                part.add_header(
-                    'Content-Disposition',
-                    f'attachment; filename= {os.path.basename(attachment_path)}'
-                )
-                msg.attach(part)
-            
-            server = smtplib.SMTP('smtp.gmail.com', 587)
-            server.starttls()
-            server.login(gmail_user, gmail_password)
-            text = msg.as_string()
-            server.sendmail(gmail_user, to, text)
-            server.quit()
-            
-            return f"Email sent successfully to {to}"
-            
-        except Exception as e:
-            return f"Error sending email: {str(e)}"
     
     def get_memory_stats(self) -> Dict:
         """Get memory database statistics"""

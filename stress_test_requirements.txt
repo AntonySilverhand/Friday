@@ -1,0 +1,51 @@
+# Stress and Performance Testing Requirements for MCP Servers
+
+# Core testing frameworks
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-mock==3.12.0
+
+# HTTP clients for API testing
+aiohttp==3.9.1
+requests==2.31.0
+
+# Performance monitoring and profiling
+psutil==5.9.6
+memory-profiler==0.61.0
+tracemalloc
+
+# Load testing
+locust==2.17.0
+
+# Data analysis and visualization
+numpy==1.24.3
+matplotlib==3.7.2
+pandas==2.0.3
+
+# Statistics and metrics
+scipy==1.11.4
+
+# Configuration and environment
+python-dotenv==1.0.0
+
+# Async utilities
+asyncio-throttle==1.0.2
+
+# JSON handling
+orjson==3.9.9
+
+# Time and date utilities
+python-dateutil==2.8.2
+pytz==2023.3
+
+# MCP and Google API dependencies (from original requirements)
+google-api-python-client==2.108.0
+google-auth==2.23.4
+google-auth-oauthlib==1.1.0
+google-auth-httplib2==0.1.1
+fastmcp==0.2.0
+
+# Additional utilities
+colorama==0.4.6
+rich==13.7.0
+tabulate==0.9.0

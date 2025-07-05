@@ -1,0 +1,149 @@
+{
+  "test_configurations": {
+    "light_load": {
+      "concurrent_users": 5,
+      "operations_per_user": 20,
+      "test_duration_seconds": 60,
+      "think_time_min": 0.5,
+      "think_time_max": 2.0,
+      "description": "Light load testing for development"
+    },
+    "medium_load": {
+      "concurrent_users": 20,
+      "operations_per_user": 50,
+      "test_duration_seconds": 180,
+      "think_time_min": 0.2,
+      "think_time_max": 1.0,
+      "description": "Medium load testing for staging"
+    },
+    "heavy_load": {
+      "concurrent_users": 50,
+      "operations_per_user": 100,
+      "test_duration_seconds": 300,
+      "think_time_min": 0.1,
+      "think_time_max": 0.5,
+      "description": "Heavy load testing for production validation"
+    },
+    "extreme_load": {
+      "concurrent_users": 100,
+      "operations_per_user": 200,
+      "test_duration_seconds": 600,
+      "think_time_min": 0.05,
+      "think_time_max": 0.2,
+      "description": "Extreme load testing for capacity planning"
+    }
+  },
+  "server_configuration": {
+    "email_mcp": {
+      "host": "127.0.0.1",
+      "port": 5002,
+      "timeout": 30,
+      "max_connections": 100
+    },
+    "day_management_mcp": {
+      "host": "127.0.0.1", 
+      "port": 5003,
+      "timeout": 30,
+      "max_connections": 100
+    }
+  },
+  "performance_thresholds": {
+    "email_mcp": {
+      "max_avg_response_time_ms": 500,
+      "max_p95_response_time_ms": 1000,
+      "max_p99_response_time_ms": 2000,
+      "min_throughput_ops_per_sec": 10,
+      "max_error_rate_percent": 5,
+      "max_memory_usage_mb": 500
+    },
+    "day_management_mcp": {
+      "max_avg_response_time_ms": 800,
+      "max_p95_response_time_ms": 1500,
+      "max_p99_response_time_ms": 3000,
+      "min_throughput_ops_per_sec": 8,
+      "max_error_rate_percent": 5,
+      "max_memory_usage_mb": 600
+    }
+  },
+  "monitoring": {
+    "system_metrics_interval": 1.0,
+    "memory_profiling_enabled": true,
+    "cpu_monitoring_enabled": true,
+    "network_monitoring_enabled": true,
+    "disk_monitoring_enabled": true
+  },
+  "test_data": {
+    "email_batch_sizes": [10, 50, 100, 500],
+    "calendar_event_batch_sizes": [10, 25, 50, 100],
+    "task_batch_sizes": [20, 50, 100, 200],
+    "attachment_sizes_mb": [0.1, 1, 5, 10]
+  },
+  "retry_configuration": {
+    "max_retries": 3,
+    "initial_delay_seconds": 1.0,
+    "exponential_backoff_multiplier": 2.0,
+    "max_delay_seconds": 30.0
+  },
+  "oauth_test_scenarios": [
+    {
+      "name": "token_expiry_during_load",
+      "expired_token": true,
+      "concurrent_users": 10,
+      "operations_per_user": 20
+    },
+    {
+      "name": "refresh_token_network_delay",
+      "network_delay_seconds": 2.0,
+      "concurrent_refreshes": 5
+    },
+    {
+      "name": "refresh_failure_recovery",
+      "failure_rate": 0.2,
+      "retry_attempts": 3
+    }
+  ],
+  "rate_limiting_scenarios": [
+    {
+      "name": "burst_100_rps",
+      "requests_per_second": 100,
+      "duration_seconds": 10
+    },
+    {
+      "name": "sustained_50_rps",
+      "requests_per_second": 50,
+      "duration_seconds": 60
+    },
+    {
+      "name": "spike_1000_burst",
+      "burst_requests": 1000,
+      "burst_duration_seconds": 1
+    }
+  ],
+  "error_scenarios": [
+    {
+      "name": "network_timeout",
+      "error_type": "timeout",
+      "frequency": 0.05,
+      "recovery_strategy": "retry_with_backoff"
+    },
+    {
+      "name": "server_error_500",
+      "error_type": "server_error",
+      "frequency": 0.1,
+      "recovery_strategy": "circuit_breaker"
+    },
+    {
+      "name": "auth_failure",
+      "error_type": "authentication",
+      "frequency": 0.02,
+      "recovery_strategy": "token_refresh"
+    }
+  ],
+  "reporting": {
+    "generate_charts": true,
+    "save_raw_data": true,
+    "email_reports": false,
+    "webhook_notifications": false,
+    "report_formats": ["txt", "json", "html"]
+  }
+}
