@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friday AI Web Test Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: calc(100vh - 40px);
+        }
+
+        .panel {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            grid-column: 1 / -1;
+            background: linear-gradient(45deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .status-online { background: #00ff88; box-shadow: 0 0 10px #00ff88; }
+        .status-offline { background: #ff4444; box-shadow: 0 0 10px #ff4444; }
+        .status-processing { background: #ffaa00; box-shadow: 0 0 10px #ffaa00; animation: pulse 1s infinite; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #00d4ff;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+            min-width: 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #00b8e6, #007aa3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(45deg, #00e577, #00b35c);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn-danger {
+            background: linear-gradient(45deg, #ff4444, #cc3636);
+            color: white;
+        }
+
+        .btn-record {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff4444, #cc3636);
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            transition: all 0.3s ease;
+        }
+
+        .btn-record:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(255, 68, 68, 0.5);
+        }
+
+        .btn-record.recording {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            animation: record-pulse 1s infinite;
+        }
+
+        @keyframes record-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .response-area {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.6;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .message-user {
+            background: rgba(0, 212, 255, 0.1);
+            border-left-color: #00d4ff;
+        }
+
+        .message-friday {
+            background: rgba(0, 255, 136, 0.1);
+            border-left-color: #00ff88;
+        }
+
+        .message-error {
+            background: rgba(255, 68, 68, 0.1);
+            border-left-color: #ff4444;
+        }
+
+        .message-status {
+            background: rgba(255, 170, 0, 0.1);
+            border-left-color: #ffaa00;
+            font-style: italic;
+        }
+
+        .timestamp {
+            font-size: 0.8em;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+
+        .audio-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .audio-level {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .audio-level-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            accent-color: #00d4ff;
+        }
+
+        .connection-status {
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .connection-online {
+            background: rgba(0, 255, 136, 0.2);
+            border: 1px solid #00ff88;
+            color: #00ff88;
+        }
+
+        .connection-offline {
+            background: rgba(255, 68, 68, 0.2);
+            border: 1px solid #ff4444;
+            color: #ff4444;
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+
+        .loading-dots {
+            display: inline-block;
+        }
+
+        .loading-dots:after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header panel">
+            <h1>🤖 Friday AI Web Test Interface</h1>
+            <p>Test audio and text communication with Friday AI Assistant</p>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-indicator status-offline" id="statusIndicator"></span>
+                <span id="statusText">Connecting...</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2 class="section-title">🎤 Audio Interface</h2>
+            
+            <div class="audio-controls">
+                <button class="btn-record" id="recordBtn" disabled>
+                    🎤
+                </button>
+                <div class="audio-level">
+                    <div class="audio-level-bar" id="audioLevelBar"></div>
+                </div>
+                <div>
+                    <button class="btn btn-primary" id="playTestAudio" disabled>Play Test Audio</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <audio class="audio-player" id="responseAudio" controls style="display: none;"></audio>
+            </div>
+
+            <div class="response-area" id="audioResponse">
+                <div class="message message-status">
+                    <div class="timestamp">System</div>
+                    Click the microphone button to start recording. Speak clearly for best results.
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2 class="section-title">💬 Text Interface</h2>
+            
+            <div class="input-group">
+                <input type="text" class="text-input" id="textInput" 
+                       placeholder="Type your message to Friday..." disabled>
+            </div>
+
+            <div class="input-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" class="checkbox" id="generateAudio">
+                    <label for="generateAudio">Generate audio response</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <button class="btn btn-primary" id="sendTextBtn" disabled>Send Message</button>
+                <button class="btn btn-success" id="clearBtn">Clear History</button>
+                <button class="btn btn-primary" id="statusBtn" disabled>Get Status</button>
+            </div>
+
+            <div class="response-area" id="textResponse">
+                <div class="message message-status">
+                    <div class="timestamp">System</div>
+                    Welcome to Friday AI Web Test Interface. Type a message or use voice input to interact.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class FridayWebClient {
+            constructor() {
+                this.ws = null;
+                this.isRecording = false;
+                this.mediaRecorder = null;
+                this.audioChunks = [];
+                this.audioContext = null;
+                this.analyser = null;
+                this.microphone = null;
+                
+                this.initializeElements();
+                this.connect();
+                this.setupEventListeners();
+                this.requestMicrophonePermission();
+            }
+
+            initializeElements() {
+                this.connectionStatus = document.getElementById('connectionStatus');
+                this.statusIndicator = document.getElementById('statusIndicator');
+                this.statusText = document.getElementById('statusText');
+                this.recordBtn = document.getElementById('recordBtn');
+                this.textInput = document.getElementById('textInput');
+                this.sendTextBtn = document.getElementById('sendTextBtn');
+                this.clearBtn = document.getElementById('clearBtn');
+                this.statusBtn = document.getElementById('statusBtn');
+                this.generateAudio = document.getElementById('generateAudio');
+                this.audioResponse = document.getElementById('audioResponse');
+                this.textResponse = document.getElementById('textResponse');
+                this.responseAudio = document.getElementById('responseAudio');
+                this.audioLevelBar = document.getElementById('audioLevelBar');
+                this.playTestAudio = document.getElementById('playTestAudio');
+            }
+
+            connect() {
+                const wsUrl = `ws://${window.location.hostname}:8091`;
+                this.addMessage('status', 'System', `Connecting to ${wsUrl}...`);
+                
+                this.ws = new WebSocket(wsUrl);
+                
+                this.ws.onopen = () => {
+                    this.updateConnectionStatus(true);
+                    this.addMessage('status', 'System', 'Connected to Friday AI server');
+                };
+                
+                this.ws.onmessage = (event) => {
+                    this.handleMessage(JSON.parse(event.data));
+                };
+                
+                this.ws.onclose = () => {
+                    this.updateConnectionStatus(false);
+                    this.addMessage('error', 'System', 'Connection closed. Attempting to reconnect...');
+                    setTimeout(() => this.connect(), 3000);
+                };
+                
+                this.ws.onerror = (error) => {
+                    this.addMessage('error', 'System', `Connection error: ${error.message || 'Unknown error'}`);
+                };
+            }
+
+            updateConnectionStatus(online) {
+                if (online) {
+                    this.connectionStatus.className = 'connection-status connection-online';
+                    this.statusIndicator.className = 'status-indicator status-online';
+                    this.statusText.textContent = 'Connected to Friday AI';
+                    
+                    // Enable controls
+                    this.recordBtn.disabled = false;
+                    this.textInput.disabled = false;
+                    this.sendTextBtn.disabled = false;
+                    this.statusBtn.disabled = false;
+                } else {
+                    this.connectionStatus.className = 'connection-status connection-offline';
+                    this.statusIndicator.className = 'status-indicator status-offline';
+                    this.statusText.textContent = 'Disconnected';
+                    
+                    // Disable controls
+                    this.recordBtn.disabled = true;
+                    this.textInput.disabled = true;
+                    this.sendTextBtn.disabled = true;
+                    this.statusBtn.disabled = true;
+                }
+            }
+
+            setupEventListeners() {
+                this.recordBtn.addEventListener('click', () => this.toggleRecording());
+                this.sendTextBtn.addEventListener('click', () => this.sendTextMessage());
+                this.clearBtn.addEventListener('click', () => this.clearHistory());
+                this.statusBtn.addEventListener('click', () => this.getServerStatus());
+                this.playTestAudio.addEventListener('click', () => this.playTestAudioMessage());
+                
+                this.textInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.sendTextMessage();
+                    }
+                });
+            }
+
+            async requestMicrophonePermission() {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ 
+                        audio: {
+                            sampleRate: 16000,
+                            channelCount: 1,
+                            echoCancellation: true,
+                            noiseSuppression: true
+                        } 
+                    });
+                    
+                    this.setupAudioAnalyser(stream);
+                    this.addMessage('status', 'System', 'Microphone access granted');
+                    this.playTestAudio.disabled = false;
+                } catch (error) {
+                    this.addMessage('error', 'System', `Microphone access denied: ${error.message}`);
+                }
+            }
+
+            setupAudioAnalyser(stream) {
+                this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                this.analyser = this.audioContext.createAnalyser();
+                this.microphone = this.audioContext.createMediaStreamSource(stream);
+                
+                this.analyser.fftSize = 256;
+                this.microphone.connect(this.analyser);
+                
+                this.updateAudioLevel();
+            }
+
+            updateAudioLevel() {
+                if (this.analyser) {
+                    const dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+                    this.analyser.getByteFrequencyData(dataArray);
+                    
+                    const average = dataArray.reduce((sum, value) => sum + value, 0) / dataArray.length;
+                    const percentage = (average / 255) * 100;
+                    
+                    this.audioLevelBar.style.width = `${percentage}%`;
+                    
+                    requestAnimationFrame(() => this.updateAudioLevel());
+                }
+            }
+
+            async toggleRecording() {
+                if (!this.isRecording) {
+                    await this.startRecording();
+                } else {
+                    this.stopRecording();
+                }
+            }
+
+            async startRecording() {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ 
+                        audio: {
+                            sampleRate: 16000,
+                            channelCount: 1,
+                            echoCancellation: true,
+                            noiseSuppression: true
+                        } 
+                    });
+                    
+                    this.mediaRecorder = new MediaRecorder(stream, {
+                        mimeType: 'audio/webm;codecs=opus'
+                    });
+                    
+                    this.audioChunks = [];
+                    
+                    this.mediaRecorder.ondataavailable = (event) => {
+                        this.audioChunks.push(event.data);
+                    };
+                    
+                    this.mediaRecorder.onstop = () => {
+                        this.processRecordedAudio();
+                    };
+                    
+                    this.mediaRecorder.start();
+                    this.isRecording = true;
+                    
+                    this.recordBtn.classList.add('recording');
+                    this.recordBtn.textContent = '⏸️';
+                    this.statusIndicator.className = 'status-indicator status-processing';
+                    
+                    this.addMessage('status', 'System', 'Recording... Click again to stop');
+                    
+                } catch (error) {
+                    this.addMessage('error', 'System', `Recording failed: ${error.message}`);
+                }
+            }
+
+            stopRecording() {
+                if (this.mediaRecorder && this.isRecording) {
+                    this.mediaRecorder.stop();
+                    this.isRecording = false;
+                    
+                    this.recordBtn.classList.remove('recording');
+                    this.recordBtn.textContent = '🎤';
+                    this.statusIndicator.className = 'status-indicator status-online';
+                    
+                    this.addMessage('status', 'System', 'Recording stopped, processing...');
+                }
+            }
+
+            async processRecordedAudio() {
+                const audioBlob = new Blob(this.audioChunks, { type: 'audio/webm' });
+                
+                // Convert to WAV format
+                const arrayBuffer = await audioBlob.arrayBuffer();
+                const audioBase64 = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+                
+                this.sendMessage({
+                    type: 'audio_data',
+                    audio: audioBase64
+                });
+            }
+
+            sendTextMessage() {
+                const text = this.textInput.value.trim();
+                if (text && this.ws && this.ws.readyState === WebSocket.OPEN) {
+                    this.addMessage('user', 'You', text);
+                    
+                    this.sendMessage({
+                        type: 'text_input',
+                        text: text,
+                        want_audio: this.generateAudio.checked
+                    });
+                    
+                    this.textInput.value = '';
+                }
+            }
+
+            getServerStatus() {
+                if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+                    this.sendMessage({ type: 'get_status' });
+                }
+            }
+
+            playTestAudioMessage() {
+                this.sendTextMessage.call({
+                    ...this,
+                    textInput: { value: 'Hello Friday, this is a test message', trim: () => 'Hello Friday, this is a test message' },
+                    generateAudio: { checked: true }
+                });
+            }
+
+            sendMessage(message) {
+                if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+                    this.ws.send(JSON.stringify(message));
+                }
+            }
+
+            handleMessage(data) {
+                switch (data.type) {
+                    case 'welcome':
+                        this.addMessage('status', 'Friday', data.message);
+                        break;
+                    
+                    case 'stt_result':
+                        this.addMessage('user', 'You (STT)', data.text);
+                        break;
+                    
+                    case 'friday_response':
+                        this.addMessage('friday', 'Friday', data.text, 'both');
+                        break;
+                    
+                    case 'audio_response':
+                        this.playAudioResponse(data.audio);
+                        break;
+                    
+                    case 'status':
+                        this.addMessage('status', 'System', data.message);
+                        break;
+                    
+                    case 'error':
+                        this.addMessage('error', 'Error', data.message);
+                        break;
+                    
+                    case 'server_status':
+                        this.displayServerStatus(data);
+                        break;
+                    
+                    case 'pong':
+                        this.addMessage('status', 'System', `Pong received at ${new Date(data.timestamp).toLocaleTimeString()}`);
+                        break;
+                }
+            }
+
+            playAudioResponse(audioBase64) {
+                try {
+                    const audioData = atob(audioBase64);
+                    const audioArray = new Uint8Array(audioData.length);
+                    for (let i = 0; i < audioData.length; i++) {
+                        audioArray[i] = audioData.charCodeAt(i);
+                    }
+                    
+                    const audioBlob = new Blob([audioArray], { type: 'audio/wav' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    
+                    this.responseAudio.src = audioUrl;
+                    this.responseAudio.style.display = 'block';
+                    this.responseAudio.play();
+                    
+                    this.addMessage('status', 'System', '🔊 Audio response playing');
+                } catch (error) {
+                    this.addMessage('error', 'System', `Audio playback failed: ${error.message}`);
+                }
+            }
+
+            addMessage(type, sender, content, target = 'both') {
+                const timestamp = new Date().toLocaleTimeString();
+                const messageHtml = `
+                    <div class="message message-${type}">
+                        <div class="timestamp">${timestamp} - ${sender}</div>
+                        <div>${content}</div>
+                    </div>
+                `;
+                
+                if (target === 'both' || target === 'audio') {
+                    this.audioResponse.insertAdjacentHTML('beforeend', messageHtml);
+                    this.audioResponse.scrollTop = this.audioResponse.scrollHeight;
+                }
+                
+                if (target === 'both' || target === 'text') {
+                    this.textResponse.insertAdjacentHTML('beforeend', messageHtml);
+                    this.textResponse.scrollTop = this.textResponse.scrollHeight;
+                }
+            }
+
+            displayServerStatus(status) {
+                const statusText = `
+                    Server Status: ${status.status}<br>
+                    Connected Clients: ${status.clients_connected}<br>
+                    OpenAI Available: ${status.openai_available ? '✅' : '❌'}<br>
+                    Friday Available: ${status.friday_available ? '✅' : '❌'}<br>
+                    Timestamp: ${new Date(status.timestamp).toLocaleString()}
+                `;
+                this.addMessage('status', 'Server Status', statusText);
+            }
+
+            clearHistory() {
+                this.audioResponse.innerHTML = `
+                    <div class="message message-status">
+                        <div class="timestamp">System</div>
+                        History cleared. Ready for new interactions.
+                    </div>
+                `;
+                this.textResponse.innerHTML = `
+                    <div class="message message-status">
+                        <div class="timestamp">System</div>
+                        History cleared. Ready for new interactions.
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize the client when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new FridayWebClient();
+        });
+    </script>
+</body>
+</html>
