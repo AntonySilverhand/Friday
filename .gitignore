@@ -3,6 +3,7 @@
 
 # Virtual environment
 venv/
+friday_venv/
 
 # Python cache
 __pycache__/
@@ -10,11 +11,25 @@ __pycache__/
 *.pyo
 *.pyd
 
+# Database files
+*.db
+
+# Log files
+*.log
+
+# Temporary files
+temp_*
+secure_*_temp_*
+audio_temp/
+web_temp_audio/
+secure_web_temp_audio/
+
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*.tmp
 
 # OS
 .DS_Store

@@ -1,0 +1,246 @@
+2025-07-05 14:44:23,567 - __main__ - INFO - 🔒 Starting Friday AI Secure Smart Web Test Server...
+2025-07-05 14:44:23,568 - __main__ - INFO - 🔍 Scanning for available ports...
+2025-07-05 14:44:23,568 - __main__ - INFO - ✅ Found preferred port: 8090
+2025-07-05 14:44:23,568 - __main__ - INFO - ✅ Found preferred port: 8091
+2025-07-05 14:44:23,568 - __main__ - INFO - 🎯 Selected ports - Web: 8090, WebSocket: 8091
+2025-07-05 14:44:23,633 - __main__ - INFO - ✅ OpenAI client initialized securely
+2025-07-05 14:44:23,700 - __main__ - INFO - ✅ Friday AI initialized securely
+2025-07-05 14:44:23,700 - __main__ - INFO - ✅ Secure audio temp directory created
+2025-07-05 14:44:23,700 - __main__ - INFO - ✅ Secure session hash generated: dd8ea91a7a9888cc
+2025-07-05 14:44:23,701 - __main__ - INFO - 🌐 Secure web server started in background thread
+2025-07-05 14:44:23,701 - __main__ - INFO - ✅ Secure web server running on http://0.0.0.0:8090
+2025-07-05 14:44:23,702 - __main__ - INFO - 🔌 Starting secure WebSocket server on 0.0.0.0:8091
+2025-07-05 14:44:23,716 - websockets.server - INFO - server listening on 0.0.0.0:8091
+2025-07-05 14:44:23,716 - __main__ - INFO - ✅ Secure WebSocket server running on ws://0.0.0.0:8091
+2025-07-05 14:49:24,685 - __main__ - INFO - 🔒 Starting Friday AI Secure Smart Web Test Server...
+2025-07-05 14:49:24,685 - __main__ - INFO - 🔍 Scanning for available ports...
+2025-07-05 14:49:24,685 - __main__ - INFO - ✅ Found preferred port: 8090
+2025-07-05 14:49:24,685 - __main__ - INFO - ✅ Found preferred port: 8091
+2025-07-05 14:49:24,686 - __main__ - INFO - 🎯 Selected ports - Web: 8090, WebSocket: 8091
+2025-07-05 14:49:24,752 - __main__ - INFO - ✅ OpenAI client initialized securely
+2025-07-05 14:49:24,791 - __main__ - INFO - ✅ Friday AI initialized securely
+2025-07-05 14:49:24,792 - __main__ - INFO - ✅ Secure audio temp directory created
+2025-07-05 14:49:24,792 - __main__ - INFO - ✅ Secure session hash generated: e3c4d6bf4b9c8ddc
+2025-07-05 14:49:24,793 - __main__ - INFO - 🌐 Secure web server started in background thread
+2025-07-05 14:49:24,793 - __main__ - INFO - ✅ Secure web server running on http://0.0.0.0:8090
+2025-07-05 14:49:24,794 - __main__ - INFO - 🔌 Starting secure WebSocket server on 0.0.0.0:8091
+2025-07-05 14:49:24,806 - websockets.server - INFO - server listening on 0.0.0.0:8091
+2025-07-05 14:49:24,806 - __main__ - INFO - ✅ Secure WebSocket server running on ws://0.0.0.0:8091
+2025-07-05 14:49:29,242 - __main__ - INFO - HTTP: "GET /config.js HTTP/1.1" 200 -
+2025-07-05 14:49:32,003 - websockets.server - INFO - connection open
+2025-07-05 14:49:32,003 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:49:37,703 - websockets.server - INFO - connection open
+2025-07-05 14:49:37,703 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:49:43,402 - websockets.server - INFO - connection open
+2025-07-05 14:49:43,402 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:49:49,052 - websockets.server - INFO - connection open
+2025-07-05 14:49:49,052 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:49:55,371 - websockets.server - INFO - connection open
+2025-07-05 14:49:55,372 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:50:01,467 - websockets.server - INFO - connection open
+2025-07-05 14:50:01,467 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:50:07,445 - websockets.server - INFO - connection open
+2025-07-05 14:50:07,446 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:50:13,441 - websockets.server - INFO - connection open
+2025-07-05 14:50:13,441 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:50:19,478 - websockets.server - INFO - connection open
+2025-07-05 14:50:19,479 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:50:25,456 - websockets.server - INFO - connection open
+2025-07-05 14:50:25,456 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:50:31,418 - websockets.server - INFO - connection open
+2025-07-05 14:50:31,418 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:50:37,466 - websockets.server - INFO - connection open
+2025-07-05 14:50:37,467 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:50:43,378 - websockets.server - INFO - connection open
+2025-07-05 14:50:43,378 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:50:49,448 - websockets.server - INFO - connection open
+2025-07-05 14:50:49,448 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:50:55,360 - websockets.server - INFO - connection open
+2025-07-05 14:50:55,360 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:51:01,537 - websockets.server - INFO - connection open
+2025-07-05 14:51:01,538 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:51:07,455 - websockets.server - INFO - connection open
+2025-07-05 14:51:07,455 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:51:13,480 - websockets.server - INFO - connection open
+2025-07-05 14:51:13,480 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:51:19,482 - websockets.server - INFO - connection open
+2025-07-05 14:51:19,483 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:51:25,371 - websockets.server - INFO - connection open
+2025-07-05 14:51:25,371 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:51:31,592 - websockets.server - INFO - connection open
+2025-07-05 14:51:31,592 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:51:37,432 - websockets.server - INFO - connection open
+2025-07-05 14:51:37,432 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:51:43,603 - websockets.server - INFO - connection open
+2025-07-05 14:51:43,603 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:51:49,476 - websockets.server - INFO - connection open
+2025-07-05 14:51:49,476 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:51:55,490 - websockets.server - INFO - connection open
+2025-07-05 14:51:55,490 - websockets.server - ERROR - connection handler failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 376, in conn_handler
+    await self.handler(connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 required positional argument: 'path'
+2025-07-05 14:52:15,724 - __main__ - INFO - 🔒 Starting Friday AI Secure Smart Web Test Server...
+2025-07-05 14:52:15,724 - __main__ - INFO - 🔍 Scanning for available ports...
+2025-07-05 14:52:15,724 - __main__ - INFO - ✅ Found preferred port: 8090
+2025-07-05 14:52:15,724 - __main__ - INFO - ✅ Found preferred port: 8091
+2025-07-05 14:52:15,724 - __main__ - INFO - 🎯 Selected ports - Web: 8090, WebSocket: 8091
+2025-07-05 14:52:15,785 - __main__ - INFO - ✅ OpenAI client initialized securely
+2025-07-05 14:52:15,824 - __main__ - INFO - ✅ Friday AI initialized securely
+2025-07-05 14:52:15,824 - __main__ - INFO - ✅ Secure audio temp directory created
+2025-07-05 14:52:15,824 - __main__ - INFO - ✅ Secure session hash generated: a403edff460ac9c8
+2025-07-05 14:52:15,825 - __main__ - INFO - 🌐 Secure web server started in background thread
+2025-07-05 14:52:15,825 - __main__ - INFO - 🔌 Starting secure WebSocket server on 0.0.0.0:8091
+2025-07-05 14:52:15,825 - __main__ - INFO - ✅ Secure web server running on http://0.0.0.0:8090
+2025-07-05 14:52:15,834 - websockets.server - INFO - server listening on 0.0.0.0:8091
+2025-07-05 14:52:15,834 - __main__ - INFO - ✅ Secure WebSocket server running on ws://0.0.0.0:8091
+2025-07-05 14:52:16,724 - websockets.server - INFO - connection open
+2025-07-05 14:52:16,724 - __main__ - INFO - 🔗 Secure client connected: 38.244.6.42:45564
+2025-07-05 14:54:29,400 - __main__ - INFO - HTTP: "GET /config.js HTTP/1.1" 200 -
+2025-07-05 14:54:37,026 - websockets.server - INFO - connection open
+2025-07-05 14:54:37,026 - __main__ - INFO - 🔗 Secure client connected: 38.244.6.42:55742
+2025-07-05 14:55:03,363 - __main__ - INFO - 💬 Processing secure text input: hi...
+2025-07-05 14:55:05,931 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-05 14:55:06,860 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 424 Failed Dependency"
+2025-07-05 14:55:13,609 - __main__ - INFO - 💬 Processing secure text input: hi...
+2025-07-05 14:55:15,675 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-05 14:55:15,893 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 424 Failed Dependency"
+2025-07-05 14:58:17,152 - __main__ - INFO - 🔌 Secure client disconnected: 38.244.6.42:55742
+2025-07-05 15:05:32,972 - websockets.server - INFO - connection open
+2025-07-05 15:05:32,974 - __main__ - INFO - 🔗 Secure client connected: 38.244.6.42:44798
+2025-07-05 15:05:33,635 - __main__ - INFO - HTTP: "GET /config.js HTTP/1.1" 200 -
+2025-07-05 15:05:36,207 - __main__ - INFO - 🔌 Secure client disconnected: 38.244.6.42:44798
+2025-07-05 15:05:36,297 - websockets.server - INFO - connection open
+2025-07-05 15:05:36,297 - __main__ - INFO - 🔗 Secure client connected: 38.244.6.42:44808
+2025-07-05 15:08:46,459 - __main__ - INFO - 🔌 Secure client disconnected: 38.244.6.42:44808
+2025-07-05 15:11:27,885 - websockets.server - INFO - connection open
+2025-07-05 15:11:27,886 - __main__ - INFO - 🔗 Secure client connected: 38.244.6.42:35616
+2025-07-05 15:11:34,186 - __main__ - INFO - HTTP: "GET /config.js HTTP/1.1" 200 -
+2025-07-05 15:11:36,920 - websockets.server - INFO - connection open
+2025-07-05 15:11:36,920 - __main__ - INFO - 🔗 Secure client connected: 38.244.6.42:44130
+2025-07-05 15:11:55,055 - __main__ - INFO - HTTP: "GET /config.js HTTP/1.1" 200 -
+2025-07-05 15:11:57,701 - websockets.server - INFO - connection open
+2025-07-05 15:11:57,701 - __main__ - INFO - 🔗 Secure client connected: 38.244.6.42:40312
+2025-07-05 15:14:37,830 - __main__ - INFO - 🔌 Secure client disconnected: 38.244.6.42:40312
