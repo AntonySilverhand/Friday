@@ -244,3 +244,130 @@ TypeError: SecureSmartFridayWebTestServer.handle_websocket_client() missing 1 re
 2025-07-05 15:11:57,701 - websockets.server - INFO - connection open
 2025-07-05 15:11:57,701 - __main__ - INFO - 🔗 Secure client connected: 38.244.6.42:40312
 2025-07-05 15:14:37,830 - __main__ - INFO - 🔌 Secure client disconnected: 38.244.6.42:40312
+2025-07-05 15:30:19,423 - websockets.server - INFO - connection open
+2025-07-05 15:30:19,423 - __main__ - INFO - 🔗 Secure client connected: 38.244.6.42:49264
+2025-07-05 15:30:24,467 - __main__ - INFO - 🔌 Secure client disconnected: 38.244.6.42:49264
+2025-07-05 21:10:06,257 - websockets.server - INFO - connection rejected (426 Upgrade Required)
+2025-07-05 21:10:06,318 - websockets.server - ERROR - opening handshake failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 356, in conn_handler
+    await connection.handshake(
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 207, in handshake
+    raise self.protocol.handshake_exc
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/server.py", line 138, in accept
+    ) = self.process_request(request)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/server.py", line 233, in process_request
+    raise InvalidUpgrade(
+websockets.exceptions.InvalidUpgrade: missing Connection header
+2025-07-05 21:10:49,077 - websockets.server - ERROR - opening handshake failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/http11.py", line 138, in parse
+    request_line = yield from parse_line(read_line)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/http11.py", line 314, in parse_line
+    raise EOFError("line without CRLF")
+EOFError: line without CRLF
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/server.py", line 545, in parse
+    request = yield from Request.parse(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/http11.py", line 140, in parse
+    raise EOFError("connection closed while reading HTTP request line") from exc
+EOFError: connection closed while reading HTTP request line
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 356, in conn_handler
+    await connection.handshake(
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 207, in handshake
+    raise self.protocol.handshake_exc
+websockets.exceptions.InvalidMessage: did not receive a valid HTTP request
+2025-07-05 21:12:31,902 - websockets.server - INFO - connection rejected (426 Upgrade Required)
+2025-07-05 21:12:31,964 - websockets.server - ERROR - opening handshake failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 356, in conn_handler
+    await connection.handshake(
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 207, in handshake
+    raise self.protocol.handshake_exc
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/server.py", line 138, in accept
+    ) = self.process_request(request)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/server.py", line 233, in process_request
+    raise InvalidUpgrade(
+websockets.exceptions.InvalidUpgrade: missing Connection header
+2025-07-05 21:13:29,486 - websockets.server - ERROR - opening handshake failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/http11.py", line 138, in parse
+    request_line = yield from parse_line(read_line)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/http11.py", line 314, in parse_line
+    raise EOFError("line without CRLF")
+EOFError: line without CRLF
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/server.py", line 545, in parse
+    request = yield from Request.parse(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/http11.py", line 140, in parse
+    raise EOFError("connection closed while reading HTTP request line") from exc
+EOFError: connection closed while reading HTTP request line
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 356, in conn_handler
+    await connection.handshake(
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 207, in handshake
+    raise self.protocol.handshake_exc
+websockets.exceptions.InvalidMessage: did not receive a valid HTTP request
+2025-07-05 21:14:36,727 - websockets.server - ERROR - opening handshake failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/server.py", line 545, in parse
+    request = yield from Request.parse(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/http11.py", line 145, in parse
+    raise ValueError(f"invalid HTTP request line: {d(request_line)}") from None
+ValueError: invalid HTTP request line: SSH-2.0-Go
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 356, in conn_handler
+    await connection.handshake(
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 207, in handshake
+    raise self.protocol.handshake_exc
+websockets.exceptions.InvalidMessage: did not receive a valid HTTP request
+2025-07-05 21:15:22,127 - websockets.server - ERROR - opening handshake failed
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/http11.py", line 138, in parse
+    request_line = yield from parse_line(read_line)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/http11.py", line 314, in parse_line
+    raise EOFError("line without CRLF")
+EOFError: line without CRLF
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/server.py", line 545, in parse
+    request = yield from Request.parse(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/http11.py", line 140, in parse
+    raise EOFError("connection closed while reading HTTP request line") from exc
+EOFError: connection closed while reading HTTP request line
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 356, in conn_handler
+    await connection.handshake(
+  File "/root/coding/Friday/friday_venv/lib/python3.11/site-packages/websockets/asyncio/server.py", line 207, in handshake
+    raise self.protocol.handshake_exc
+websockets.exceptions.InvalidMessage: did not receive a valid HTTP request
